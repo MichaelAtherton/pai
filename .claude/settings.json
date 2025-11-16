@@ -3,8 +3,8 @@
   "env": {
     "MCP_API_KEY": "REDACTED",
     "DISABLE_INTERLEAVED_THINKING": "true",
-    "DA": "Kai",
-    "PAI_DIR": "$HOME/.claude"
+    "DA": "Lucy",
+    "PAI_DIR": "/Users/michaelatherton/Documents/condaEnv/AIRL/PAI/.claude"
   },
   "permissions": {
     "allow": [

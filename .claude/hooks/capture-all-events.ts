@@ -112,7 +112,17 @@ async function main() {
 
     // Read hook data from stdin
     const stdinData = await Bun.stdin.text();
-    const hookData = JSON.parse(stdinData);
+    
+    // Handle empty stdin for events that don't send data (SessionStart, Stop, etc.)
+    let hookData: any = {};
+    if (stdinData.trim()) {
+      try {
+        hookData = JSON.parse(stdinData);
+      } catch (error) {
+        console.error(`Warning: Failed to parse hook data: ${error}`);
+        // Continue with empty hookData instead of crashing
+      }
+    }
 
     // Detect agent type from session mapping or payload
     const sessionId = hookData.session_id || 'main';

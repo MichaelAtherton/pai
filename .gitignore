@@ -61,3 +61,7 @@ out/
 private/
 secrets/
 credentials/
+
+# Claude Code session data
+.claude/history/
+.claude/agent-sessions.json
