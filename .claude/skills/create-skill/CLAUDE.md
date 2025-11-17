@@ -1,6 +1,6 @@
 # Create Skill - Comprehensive Skill Creation Guide
 
-## 🎯 PURPOSE: EXTENDING KAI'S CAPABILITIES THROUGH MODULAR SKILLS
+## 🎯 PURPOSE: EXTENDING Lucy's CAPABILITIES THROUGH MODULAR SKILLS
 
 **Skills are modular, self-contained packages that extend Claude's capabilities with specialized knowledge, workflows, and tools.**
 
@@ -238,7 +238,7 @@ mkdir -p ${PAI_DIR}/skills/[skill-name]/[component-dirs]
 
 **Step 1: Write description first**
 - This drives everything else
-- Test by asking: "Would Kai activate this skill for relevant requests?"
+- Test by asking: "Would Lucy activate this skill for relevant requests?"
 
 **Step 2: Document activation triggers**
 - List explicit user phrases

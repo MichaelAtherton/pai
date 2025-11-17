@@ -42,8 +42,11 @@ async function main() {
       process.exit(0);
     }
 
-    // Get PAI directory from environment or use default
-    const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+    // Get PAI directory from environment
+    const paiDir = process.env.PAI_DIR;
+    if (!paiDir) {
+      throw new Error('PAI_DIR environment variable not set');
+    }
     const paiSkillPath = join(paiDir, 'skills/CORE/SKILL.md');
 
     // Verify PAI skill file exists

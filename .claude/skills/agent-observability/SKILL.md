@@ -87,14 +87,14 @@ Once the dashboard is running, any Claude Code activity will appear in real-time
 
 ### Real-Time Visualization
 
-- **Agent Swim Lanes:** See multiple agents (kai, designer, engineer, etc.) running in parallel
+- **Agent Swim Lanes:** See multiple agents (lucy, designer, engineer, etc.) running in parallel
 - **Event Timeline:** Chronological view of all events
 - **Tool Usage Charts:** Visualize which tools are being used most
 - **Session Tracking:** Track individual sessions and their lifecycles
 
 ### Filtering & Search
 
-- Filter by agent name (kai, designer, engineer, pentester, etc.)
+- Filter by agent name (lucy, designer, engineer, pentester, etc.)
 - Filter by event type (PreToolUse, PostToolUse, etc.)
 - Filter by session ID
 - Search event payloads
@@ -109,7 +109,7 @@ Events are stored in JSONL (JSON Lines) format:
 
 Each line is a complete JSON object:
 ```jsonl
-{"source_app":"kai","session_id":"abc123","hook_event_type":"PreToolUse","payload":{...},"timestamp":1234567890,"timestamp_pst":"2025-01-28 14:30:00 PST"}
+{"source_app":"lucy","session_id":"abc123","hook_event_type":"PreToolUse","payload":{...},"timestamp":1234567890,"timestamp_pst":"2025-01-28 14:30:00 PST"}
 ```
 
 ### In-Memory Streaming

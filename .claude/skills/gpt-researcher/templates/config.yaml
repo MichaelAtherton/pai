@@ -1,0 +1,198 @@
+# GPT Researcher Configuration Template
+# This file contains common configuration options for GPT Researcher
+# Copy this file and customize for your specific research needs
+
+# ==============================================================================
+# LLM CONFIGURATION
+# ==============================================================================
+
+# LLM Provider Options: openai, anthropic, azure_openai, ollama, groq, etc.
+# See: https://docs.gptr.dev/docs/llm-providers/configure-llm
+
+# Fast LLM - Used for quick operations (query generation, etc.)
+fast_llm: "openai:gpt-4o-mini"
+
+# Smart LLM - Used for complex research and report writing
+smart_llm: "openai:gpt-4o"
+
+# Strategic LLM - Used for planning and strategic decisions
+strategic_llm: "openai:o4-mini"
+
+# Embedding Model - Used for document vectorization
+embedding: "openai:text-embedding-3-small"
+
+# ==============================================================================
+# RETRIEVER CONFIGURATION
+# ==============================================================================
+
+# Retriever Options: tavily, google, bing, arxiv, semantic_scholar, pubmed_central,
+# exa, searx, duckduckgo, mcp
+# You can specify multiple retrievers separated by commas for hybrid search
+# Example: "tavily,arxiv,mcp"
+
+retriever: "tavily"
+
+# ==============================================================================
+# RESEARCH CONFIGURATION
+# ==============================================================================
+
+# Maximum iterations for research
+max_iterations: 3
+
+# Maximum number of search results per query
+max_search_results: 10
+
+# Report type options: research_report, outline_report, resource_report, custom_report, deep
+report_type: "research_report"
+
+# Report source options: web, local, hybrid, langchain_documents
+report_source: "web"
+
+# Total words in generated report
+total_words: 1000
+
+# Report format options: markdown, pdf, docx, json
+report_format: "markdown"
+
+# ==============================================================================
+# DEEP RESEARCH CONFIGURATION
+# ==============================================================================
+
+# Number of parallel research paths at each level
+deep_research_breadth: 4
+
+# How many levels deep to explore
+deep_research_depth: 2
+
+# Maximum number of concurrent research operations
+deep_research_concurrency: 4
+
+# ==============================================================================
+# LOCAL DOCUMENTS CONFIGURATION
+# ==============================================================================
+
+# Path to local documents directory (for local/hybrid research)
+doc_path: "./my-docs"
+
+# Supported document formats: pdf, txt, docx, csv, xlsx, md, pptx, etc.
+
+# ==============================================================================
+# MCP (Model Context Protocol) CONFIGURATION
+# ==============================================================================
+
+# MCP strategy options: fast, deep, disabled
+mcp_strategy: "fast"
+
+# Enable automatic tool selection for MCP servers
+mcp_auto_tool_selection: true
+
+# ==============================================================================
+# BEHAVIOR CONFIGURATION
+# ==============================================================================
+
+# Enable verbose logging
+verbose: true
+
+# Tone options: OBJECTIVE, FORMAL, ANALYTICAL, PERSUASIVE, INFORMATIVE,
+# EXPLANATORY, DESCRIPTIVE, CRITICAL, COMPARATIVE, SPECULATIVE, REFLECTIVE,
+# NARRATIVE, HUMOROUS, OPTIMISTIC, PESSIMISTIC
+tone: "OBJECTIVE"
+
+# Follow guidelines flag
+follow_guidelines: false
+
+# Custom guidelines (list of requirements for the report)
+guidelines:
+  - "The report MUST fully answer the original question"
+  - "The report MUST include proper citations"
+  - "The report MUST be well-structured with clear sections"
+
+# ==============================================================================
+# PERFORMANCE & COST OPTIMIZATION
+# ==============================================================================
+
+# Maximum tokens for LLM responses
+max_tokens: 4000
+
+# Temperature for LLM generation (0.0 - 1.0)
+temperature: 0.7
+
+# Enable caching for repeated queries
+enable_cache: true
+
+# ==============================================================================
+# OUTPUT CONFIGURATION
+# ==============================================================================
+
+# Directory for saving reports
+output_dir: "./research_reports"
+
+# Include table of contents in reports
+include_toc: true
+
+# Include references/citations
+include_references: true
+
+# Include metadata (date, query, sources count, etc.)
+include_metadata: true
+
+# ==============================================================================
+# EXAMPLE CONFIGURATIONS
+# ==============================================================================
+
+# Example 1: Quick Web Research
+# fast_llm: "openai:gpt-4o-mini"
+# smart_llm: "openai:gpt-4o-mini"
+# retriever: "tavily"
+# report_type: "research_report"
+# total_words: 500
+
+# Example 2: Deep Academic Research
+# smart_llm: "openai:gpt-4o"
+# retriever: "arxiv,semantic_scholar"
+# report_type: "deep"
+# deep_research_breadth: 6
+# deep_research_depth: 3
+# total_words: 3000
+
+# Example 3: Local Documents Analysis
+# report_source: "local"
+# doc_path: "./company-docs"
+# retriever: ""
+# total_words: 1500
+
+# Example 4: Hybrid Research (Web + Local)
+# report_source: "hybrid"
+# retriever: "tavily,google"
+# doc_path: "./my-docs"
+# total_words: 2000
+
+# Example 5: MCP Integration
+# retriever: "tavily,mcp"
+# mcp_strategy: "deep"
+# mcp_auto_tool_selection: true
+
+# ==============================================================================
+# NOTES
+# ==============================================================================
+
+# 1. API Keys should be set as environment variables, not in this config:
+#    - OPENAI_API_KEY
+#    - TAVILY_API_KEY
+#    - ANTHROPIC_API_KEY
+#    - GROQ_API_KEY
+#    - etc.
+
+# 2. For detailed configuration options, see:
+#    https://docs.gptr.dev/docs/llm-providers/configure-llm
+
+# 3. Cost estimates:
+#    - Quick research (~500 words): $0.05 - $0.10
+#    - Standard research (~1000 words): $0.10 - $0.20
+#    - Deep research (~2500 words): $0.30 - $0.50
+
+# 4. Performance tips:
+#    - Use gpt-4o-mini for faster, cheaper research
+#    - Use gpt-4o for higher quality, comprehensive reports
+#    - Enable caching to reduce repeated API calls
+#    - Adjust max_iterations based on depth needs

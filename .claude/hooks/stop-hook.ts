@@ -44,7 +44,7 @@ function generateTabTitle(prompt: string, completedLine?: string): string {
   // Find action verb if present
   const actionVerbs = ['test', 'rename', 'fix', 'debug', 'research', 'write', 'create', 'make', 'build', 'implement', 'analyze', 'review', 'update', 'modify', 'generate', 'develop', 'design', 'deploy', 'configure', 'setup', 'install', 'remove', 'delete', 'add', 'check', 'verify', 'validate', 'optimize', 'refactor', 'enhance', 'improve', 'send', 'email', 'help', 'updated', 'fixed', 'created', 'built', 'added'];
 
-  let titleWords = [];
+  let titleWords: string[] = [];
 
   // Check for action verb
   for (const verb of actionVerbs) {
@@ -155,7 +155,7 @@ try {
   VOICE_CONFIG = {
     default_rate: 175,
     voices: {
-      kai: { voice_name: "Jamie (Premium)", rate_wpm: 263, rate_multiplier: 1.5, description: "UK Male", type: "Premium" },
+      lucy: { voice_name: "Jamie (Premium)", rate_wpm: 263, rate_multiplier: 1.5, description: "UK Male", type: "Premium" },
       researcher: { voice_name: "Ava (Premium)", rate_wpm: 236, rate_multiplier: 1.35, description: "US Female", type: "Premium" },
       engineer: { voice_name: "Tom (Enhanced)", rate_wpm: 236, rate_multiplier: 1.35, description: "US Male", type: "Enhanced" },
       architect: { voice_name: "Serena (Premium)", rate_wpm: 236, rate_multiplier: 1.35, description: "UK Female", type: "Premium" },
@@ -359,10 +359,10 @@ async function main() {
 
   // Generate the announcement
   let message = '';
-  let voiceConfig = VOICE_CONFIG.voices.kai; // Default to Kai's voice config
-  let kaiHasCustomCompleted = false;
+  let voiceConfig = VOICE_CONFIG.voices.lucy; // Default to Lucy's voice config
+  let lucyHasCustomCompleted = false;
 
-  // ALWAYS check Kai's response FIRST (even when agents are used)
+  // ALWAYS check Lucy's response FIRST (even when agents are used)
   const lastResponse = lines[lines.length - 1];
   try {
     const entry = JSON.parse(lastResponse);
@@ -383,8 +383,8 @@ async function main() {
         const wordCount = customText.split(/\s+/).length;
         if (customText && wordCount <= 8) {
           message = customText;
-          kaiHasCustomCompleted = true;
-          console.error(`🗣️ KAI CUSTOM VOICE: ${message}`);
+          lucyHasCustomCompleted = true;
+          console.error(`🗣️ LUCY CUSTOM VOICE: ${message}`);
         } else {
           // Custom completed too long, fall back to regular COMPLETED
           const completedMatch = content.match(/🎯\s*COMPLETED:\s*(.+?)(?:\n|$)/im);
@@ -413,10 +413,10 @@ async function main() {
       }
     }
   } catch (e) {
-    console.error('⚠️ Error parsing Kai response:', e);
+    console.error('⚠️ Error parsing Lucy response:', e);
   }
 
-  // If Kai didn't provide a CUSTOM COMPLETED and an agent was used, check agent's response
+  // If Lucy didn't provide a CUSTOM COMPLETED and an agent was used, check agent's response
   if (!message && isAgentTask && taskResult) {
     // First, try to find CUSTOM COMPLETED line in agent response
     const customCompletedMatch = taskResult.match(/🗣️\s*CUSTOM\s+COMPLETED:\s*(.+?)(?:\n|$)/im);
@@ -433,7 +433,7 @@ async function main() {
       const wordCount = customText.split(/\s+/).length;
       if (customText && wordCount <= 8) {
         message = customText;
-        voiceConfig = VOICE_CONFIG.voices[agentType.toLowerCase()] || VOICE_CONFIG.voices.kai;
+        voiceConfig = VOICE_CONFIG.voices[agentType.toLowerCase()] || VOICE_CONFIG.voices.lucy;
         console.error(`🗣️ AGENT CUSTOM VOICE (fallback): ${message}`);
       } else {
         // Custom completed too long, fall back to regular COMPLETED
@@ -444,7 +444,7 @@ async function main() {
             .replace(/\[AGENT:\w+\]\s*/i, '')
             .trim();
           message = generateIntelligentResponse(lastUserQuery, taskResult, completedText);
-          voiceConfig = VOICE_CONFIG.voices[agentType.toLowerCase()] || VOICE_CONFIG.voices.kai;
+          voiceConfig = VOICE_CONFIG.voices[agentType.toLowerCase()] || VOICE_CONFIG.voices.lucy;
           console.error(`🎯 AGENT FALLBACK (custom too long): ${message}`);
         }
       }
@@ -464,7 +464,7 @@ async function main() {
 
         // Generate intelligent response for agent tasks
         message = generateIntelligentResponse(lastUserQuery, taskResult, completedText);
-        voiceConfig = VOICE_CONFIG.voices[agentType.toLowerCase()] || VOICE_CONFIG.voices.kai;
+        voiceConfig = VOICE_CONFIG.voices[agentType.toLowerCase()] || VOICE_CONFIG.voices.lucy;
 
         console.error(`🎯 AGENT INTELLIGENT (fallback): ${message}`);
       }
@@ -539,7 +539,7 @@ async function main() {
   if (message) {
     // Use the actual completion message as the tab title
     const finalTabTitle = message.slice(0, 50); // Limit to 50 chars for tab title
-    process.stderr.write(`\033]2;${finalTabTitle}\007`);
+    process.stderr.write(`\x1b]2;${finalTabTitle}\x07`);
   }
 
   console.error(`🎬 STOP-HOOK COMPLETED SUCCESSFULLY at ${new Date().toISOString()}\n`);

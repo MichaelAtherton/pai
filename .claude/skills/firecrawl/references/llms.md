@@ -1,0 +1,124 @@
+# Firecrawl Docs
+
+## Docs
+
+- [Advanced Scraping Guide](https://docs.firecrawl.dev/advanced-scraping-guide.md): Learn how to improve your Firecrawl scraping with advanced options.
+- [Batch Scrape](https://docs.firecrawl.dev/api-reference/endpoint/batch-scrape.md)
+- [Cancel Batch Scrape](https://docs.firecrawl.dev/api-reference/endpoint/batch-scrape-delete.md)
+- [Get Batch Scrape Status](https://docs.firecrawl.dev/api-reference/endpoint/batch-scrape-get.md)
+- [Get Batch Scrape Errors](https://docs.firecrawl.dev/api-reference/endpoint/batch-scrape-get-errors.md)
+- [Get Active Crawls](https://docs.firecrawl.dev/api-reference/endpoint/crawl-active.md)
+- [Cancel Crawl](https://docs.firecrawl.dev/api-reference/endpoint/crawl-delete.md)
+- [Get Crawl Status](https://docs.firecrawl.dev/api-reference/endpoint/crawl-get.md)
+- [Get Crawl Errors](https://docs.firecrawl.dev/api-reference/endpoint/crawl-get-errors.md)
+- [Crawl Params Preview](https://docs.firecrawl.dev/api-reference/endpoint/crawl-params-preview.md)
+- [Crawl](https://docs.firecrawl.dev/api-reference/endpoint/crawl-post.md)
+- [Credit Usage](https://docs.firecrawl.dev/api-reference/endpoint/credit-usage.md)
+- [Historical Credit Usage](https://docs.firecrawl.dev/api-reference/endpoint/credit-usage-historical.md)
+- [Extract](https://docs.firecrawl.dev/api-reference/endpoint/extract.md)
+- [Get Extract Status](https://docs.firecrawl.dev/api-reference/endpoint/extract-get.md)
+- [Map](https://docs.firecrawl.dev/api-reference/endpoint/map.md)
+- [Queue Status](https://docs.firecrawl.dev/api-reference/endpoint/queue-status.md)
+- [Scrape](https://docs.firecrawl.dev/api-reference/endpoint/scrape.md)
+- [Search](https://docs.firecrawl.dev/api-reference/endpoint/search.md)
+- [Token Usage](https://docs.firecrawl.dev/api-reference/endpoint/token-usage.md)
+- [Historical Token Usage](https://docs.firecrawl.dev/api-reference/endpoint/token-usage-historical.md)
+- [Introduction](https://docs.firecrawl.dev/api-reference/v2-introduction.md): Firecrawl API Reference (v2)
+- [Running locally](https://docs.firecrawl.dev/contributing/guide.md): Learn how to run Firecrawl locally to run on your own and/or contribute to the project.
+- [Open Source vs Cloud](https://docs.firecrawl.dev/contributing/open-source-or-cloud.md): Understand the differences between Firecrawl's open-source and cloud offerings
+- [Self-hosting](https://docs.firecrawl.dev/contributing/self-host.md): Learn how to self-host Firecrawl to run on your own and contribute to the project.
+- [Authenticated Scraping](https://docs.firecrawl.dev/developer-guides/advanced-guides/authenticated-scraping.md): Learn how to scrape content behind authentication using cookies
+- [Scraping Amazon](https://docs.firecrawl.dev/developer-guides/common-sites/amazon.md): Extract product data, prices, and reviews from Amazon using Firecrawl
+- [Scraping Etsy](https://docs.firecrawl.dev/developer-guides/common-sites/etsy.md): Extract handmade products, shop data, and pricing from Etsy marketplace
+- [Scraping GitHub](https://docs.firecrawl.dev/developer-guides/common-sites/github.md): Learn how to scrape GitHub using Firecrawl's core features
+- [Scraping Wikipedia](https://docs.firecrawl.dev/developer-guides/common-sites/wikipedia.md): Extract articles, infoboxes, and build knowledge graphs from Wikipedia
+- [Building an AI Research Assistant with Firecrawl and AI SDK](https://docs.firecrawl.dev/developer-guides/cookbooks/ai-research-assistant-cookbook.md): Build a complete AI-powered research assistant with web scraping and search capabilities
+- [Full-Stack Templates](https://docs.firecrawl.dev/developer-guides/examples.md): Explore real-world examples and tutorials for Firecrawl
+- [Anthropic](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/anthropic.md): Use Firecrawl with Claude for web scraping + AI workflows
+- [Gemini](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/gemini.md): Use Firecrawl with Google's Gemini AI for web scraping + AI workflows
+- [Agent Development Kit (ADK)](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/google-adk.md): Integrate Firecrawl with Google's ADK using MCP for advanced agent workflows
+- [LangChain](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/langchain.md): Use Firecrawl with LangChain for web scraping + AI workflows
+- [LangGraph](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/langgraph.md): Integrate Firecrawl with LangGraph for building agent workflows
+- [LlamaIndex](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/llamaindex.md): Use Firecrawl with LlamaIndex for RAG applications
+- [Mastra](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/mastra.md): Use Firecrawl with Mastra for building AI workflows
+- [OpenAI](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/openai.md): Use Firecrawl with OpenAI for web scraping + AI workflows
+- [Vercel AI SDK](https://docs.firecrawl.dev/developer-guides/llm-sdks-and-frameworks/vercel-ai-sdk.md): Use Firecrawl with Vercel AI SDK for web scraping + AI workflows
+- [MCP Web Search & Scrape in Claude Code](https://docs.firecrawl.dev/developer-guides/mcp-setup-guides/claude-code.md): Add web scraping and search to Claude Code in 2 minutes
+- [MCP Web Search & Scrape in Cursor](https://docs.firecrawl.dev/developer-guides/mcp-setup-guides/cursor.md): Add web scraping and search to Cursor in 2 minutes
+- [MCP Web Search & Scrape in Factory AI](https://docs.firecrawl.dev/developer-guides/mcp-setup-guides/factory-ai.md): Add web scraping and search to Factory AI in 2 minutes
+- [MCP Web Search & Scrape in Windsurf](https://docs.firecrawl.dev/developer-guides/mcp-setup-guides/windsurf.md): Add web scraping and search to Windsurf in 2 minutes
+- [Firecrawl + Dify](https://docs.firecrawl.dev/developer-guides/workflow-automation/dify.md): Official plugin for Firecrawl + Dify AI workflow automation
+- [Firecrawl + Make](https://docs.firecrawl.dev/developer-guides/workflow-automation/make.md): Official integration and workflow automation for Firecrawl + Make
+- [Firecrawl + n8n](https://docs.firecrawl.dev/developer-guides/workflow-automation/n8n.md): Learn how to use Firecrawl with n8n for web scraping automation, a complete step-by-step guide.
+- [Firecrawl + Zapier](https://docs.firecrawl.dev/developer-guides/workflow-automation/zapier.md): Official tutorials and Zapier integration templates for Firecrawl + Zapier automation
+- [Batch Scrape](https://docs.firecrawl.dev/features/batch-scrape.md): Batch scrape multiple URLs
+- [Change Tracking](https://docs.firecrawl.dev/features/change-tracking.md): Firecrawl can track changes between the current page and a previous version, and tell you if it updated or not
+- [Crawl](https://docs.firecrawl.dev/features/crawl.md): Firecrawl can recursively search through a urls subdomains, and gather the content
+- [Document Parsing](https://docs.firecrawl.dev/features/document-parsing.md): Learn about document parsing capabilities.
+- [Extract](https://docs.firecrawl.dev/features/extract.md): Extract structured data from pages using LLMs
+- [Faster Scraping](https://docs.firecrawl.dev/features/fast-scraping.md): Speed up your scrapes by 500% with the maxAge parameter
+- [JSON mode - Structured result](https://docs.firecrawl.dev/features/llm-extract.md): Extract structured data from pages via LLMs
+- [Map](https://docs.firecrawl.dev/features/map.md): Input a website and get all the urls on the website - extremely fast
+- [Proxies](https://docs.firecrawl.dev/features/proxies.md): Learn about proxy types, locations, and how Firecrawl selects proxies for your requests.
+- [Scrape](https://docs.firecrawl.dev/features/scrape.md): Turn any url into clean data
+- [Search](https://docs.firecrawl.dev/features/search.md): Search the web and get full content from results
+- [Stealth Mode](https://docs.firecrawl.dev/features/stealth-mode.md): Use stealth proxies for sites with advanced anti-bot solutions
+- [Quickstart](https://docs.firecrawl.dev/introduction.md): Firecrawl allows you to turn entire websites into LLM-ready markdown
+- [Firecrawl MCP Server](https://docs.firecrawl.dev/mcp-server.md): Use Firecrawl's API through the Model Context Protocol
+- [Migrating from v1 to v2](https://docs.firecrawl.dev/migrate-to-v2.md): Key changes, mappings, and before/after snippets to upgrade your integration to v2.
+- [Rate Limits](https://docs.firecrawl.dev/rate-limits.md): Rate limits for different pricing plans and API requests
+- [Go](https://docs.firecrawl.dev/sdks/go.md): Firecrawl Go SDK is a wrapper around the Firecrawl API to help you easily turn websites into markdown.
+- [Node](https://docs.firecrawl.dev/sdks/node.md): Firecrawl Node SDK is a wrapper around the Firecrawl API to help you easily turn websites into markdown.
+- [Overview](https://docs.firecrawl.dev/sdks/overview.md): Firecrawl SDKs are wrappers around the Firecrawl API to help you easily extract data from websites.
+- [Python](https://docs.firecrawl.dev/sdks/python.md): Firecrawl Python SDK is a wrapper around the Firecrawl API to help you easily turn websites into markdown.
+- [Rust](https://docs.firecrawl.dev/sdks/rust.md): Firecrawl Rust SDK is a library to help you easily scrape and crawl websites, and output the data in a format ready for use with language models (LLMs).
+- [AI Platforms](https://docs.firecrawl.dev/use-cases/ai-platforms.md): Power AI assistants and let customers build AI apps
+- [Competitive Intelligence](https://docs.firecrawl.dev/use-cases/competitive-intelligence.md): Monitor competitor websites and track changes in real-time
+- [Content Generation](https://docs.firecrawl.dev/use-cases/content-generation.md): Generate AI content based on website data, images, and news
+- [Data Migration](https://docs.firecrawl.dev/use-cases/data-migration.md): Transfer web data efficiently between platforms and systems
+- [Deep Research](https://docs.firecrawl.dev/use-cases/deep-research.md): Build agentic research tools with deep web search capabilities
+- [Developers & MCP](https://docs.firecrawl.dev/use-cases/developers-mcp.md): Build powerful integrations with Model Context Protocol support
+- [Investment & Finance](https://docs.firecrawl.dev/use-cases/investment-finance.md): Track companies and extract financial insights from web data
+- [Lead Enrichment](https://docs.firecrawl.dev/use-cases/lead-enrichment.md): Extract and filter leads from websites to power your sales pipeline
+- [Observability & Monitoring](https://docs.firecrawl.dev/use-cases/observability.md): Monitor websites, track uptime, and detect changes in real-time
+- [Use Cases](https://docs.firecrawl.dev/use-cases/overview.md): Transform web data into powerful features for your applications
+- [Product & E-commerce](https://docs.firecrawl.dev/use-cases/product-ecommerce.md): Monitor pricing and track inventory across e-commerce sites
+- [SEO Platforms](https://docs.firecrawl.dev/use-cases/seo-platforms.md): Optimize websites for AI assistants and search engines
+- [Event Types](https://docs.firecrawl.dev/webhooks/events.md): Complete reference of all webhook events and when they trigger
+- [Overview](https://docs.firecrawl.dev/webhooks/overview.md): Real-time notifications for your Firecrawl operations
+- [Security](https://docs.firecrawl.dev/webhooks/security.md): Verify webhook authenticity and implement security best practices
+- [Testing & Debugging](https://docs.firecrawl.dev/webhooks/testing.md): Tools and techniques for developing and debugging webhooks
+
+
+## Optional
+
+- [Playground](https://firecrawl.dev/playground)
+- [Blog](https://firecrawl.dev/blog)
+- [Community](https://discord.gg/gSmWdAkdwd)
+- [Changelog](https://firecrawl.dev/changelog)
+- [Integrations](https://www.firecrawl.dev/app)
+- [Playground](https://firecrawl.dev/playground)
+- [Blog](https://firecrawl.dev/blog)
+- [Communauté](https://discord.gg/gSmWdAkdwd)
+- [Journal des modifications](https://firecrawl.dev/changelog)
+- [Intégrations](https://www.firecrawl.dev/app)
+- [Playground](https://firecrawl.dev/playground)
+- [博客](https://firecrawl.dev/blog)
+- [社区](https://discord.gg/gSmWdAkdwd)
+- [更新日志](https://firecrawl.dev/changelog)
+- [集成](https://www.firecrawl.dev/app)
+- [Playground](https://firecrawl.dev/playground)
+- [Blog](https://firecrawl.dev/blog)
+- [Comunidade](https://discord.gg/gSmWdAkdwd)
+- [Registro de alterações](https://firecrawl.dev/changelog)
+- [Integrações](https://www.firecrawl.dev/app)
+- [Zona de pruebas](https://firecrawl.dev/playground)
+- [Blog](https://firecrawl.dev/blog)
+- [Comunidad](https://discord.gg/gSmWdAkdwd)
+- [Registro de cambios](https://firecrawl.dev/changelog)
+- [Integraciones](https://www.firecrawl.dev/app)
+- [Playground](https://firecrawl.dev/playground)
+- [ブログ](https://firecrawl.dev/blog)
+- [コミュニティ](https://discord.gg/gSmWdAkdwd)
+- [変更履歴](https://firecrawl.dev/changelog)
+- [統合](https://www.firecrawl.dev/app)

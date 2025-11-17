@@ -40,7 +40,10 @@ function getPSTTimestamp(): string {
 
 // Get current events file path
 function getEventsFilePath(): string {
-  const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+  const paiDir = process.env.PAI_DIR;
+  if (!paiDir) {
+    throw new Error('PAI_DIR environment variable not set');
+  }
   const now = new Date();
   const pstDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
   const year = pstDate.getFullYear();
@@ -59,7 +62,10 @@ function getEventsFilePath(): string {
 
 // Session-to-agent mapping functions
 function getSessionMappingFile(): string {
-  const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+  const paiDir = process.env.PAI_DIR;
+  if (!paiDir) {
+    throw new Error('PAI_DIR environment variable not set');
+  }
   return join(paiDir, 'agent-sessions.json');
 }
 
@@ -68,12 +74,12 @@ function getAgentForSession(sessionId: string): string {
     const mappingFile = getSessionMappingFile();
     if (existsSync(mappingFile)) {
       const mappings = JSON.parse(readFileSync(mappingFile, 'utf-8'));
-      return mappings[sessionId] || 'kai';
+      return mappings[sessionId] || 'lucy';
     }
   } catch (error) {
-    // Ignore errors, default to kai
+    // Ignore errors, default to lucy
   }
-  return 'kai';
+  return 'lucy';
 }
 
 function setAgentForSession(sessionId: string, agentName: string): void {
@@ -118,10 +124,10 @@ async function main() {
       agentName = hookData.tool_input.subagent_type;
       setAgentForSession(sessionId, agentName);
     }
-    // If this is a SubagentStop or Stop event, reset to kai
+    // If this is a SubagentStop or Stop event, reset to lucy
     else if (eventType === 'SubagentStop' || eventType === 'Stop') {
-      agentName = 'kai';
-      setAgentForSession(sessionId, 'kai');
+      agentName = 'lucy';
+      setAgentForSession(sessionId, 'lucy');
     }
     // Check if CLAUDE_CODE_AGENT env variable is set (for subagents)
     else if (process.env.CLAUDE_CODE_AGENT) {

@@ -101,7 +101,7 @@ if [ -f ~/.env ]; then
             if grep -q "ELEVENLABS_VOICE_ID=" ~/.env 2>/dev/null; then
                 echo -e "${GREEN}✅ Custom voice ID configured${NC}"
             else
-                echo -e "${BLUE}ℹ️  Using default voice (Kai)${NC}"
+                echo -e "${BLUE}ℹ️  Using default voice (Lucy)${NC}"
             fi
         fi
     else

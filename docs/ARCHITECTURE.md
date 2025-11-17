@@ -31,7 +31,7 @@ This document describes the architectural philosophy and design patterns of PAI 
 
 **Structure:**
 ```
-~/.claude/skills/content-creation/
+"$HOME/Documents/condaEnv/AIRL/PAI/.claude/zshrc-aliases"
 ├── SKILL.md                    # Core skill definition
 ├── workflows/                  # Specific task workflows
 │   ├── write.md               # Write new post workflow

@@ -1,5 +1,5 @@
 ## PAI Configuration
-export PAI_DIR="$HOME/.claude"  # Personal AI Infrastructure directory
+export PAI_DIR="$HOME/Documents/condaEnv/AIRL/PAI/.claude"  # Personal AI Infrastructure directory
 
 ## PAI / Claude Code Aliases
 alias cl="bun install -g @anthropic-ai/claude-code; claude --dangerously-skip-permissions"

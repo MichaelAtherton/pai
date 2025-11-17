@@ -14,9 +14,9 @@
  *
  * Setup:
  * 1. Set environment variables in settings.json:
- *    - DA: Your AI's name (e.g., "Kai", "Nova", "Assistant")
+ *    - DA: Your AI's name (e.g., "Lucy", "Nova", "Assistant")
  *    - DA_VOICE_ID: Your ElevenLabs voice ID (if using voice system)
- *    - PAI_DIR: Path to your PAI directory (defaults to $HOME/.claude)
+ *    - PAI_DIR: Path to your PAI directory (defaults to /Users/michaelatherton/Documents/condaEnv/AIRL/PAI/.claude"
  * 2. Ensure load-core-context.ts exists in hooks/ directory
  * 3. Add both hooks to SessionStart in settings.json
  */
@@ -54,7 +54,10 @@ async function sendNotification(title: string, message: string, priority: string
 }
 
 async function testStopHook() {
-  const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+  const paiDir = process.env.PAI_DIR;
+  if (!paiDir) {
+    throw new Error('PAI_DIR environment variable not set');
+  }
   const stopHookPath = join(paiDir, 'hooks/stop-hook.ts');
 
   console.error('\n🔍 Testing stop-hook configuration...');

@@ -6,7 +6,7 @@
  * Fresh start each time - no persistence
  *
  * ENVIRONMENT VARIABLES:
- * - PAI_DIR: Path to your PAI directory (defaults to ~/.claude/)
+ * - PAI_DIR: Path to your PAI directory (defaults to $HOME/Documents/condaEnv/AIRL/PAI/.claude)
  *   Example: export PAI_DIR="/Users/yourname/.claude"
  *
  * Reads events from: ${PAI_DIR}/history/raw-outputs/YYYY-MM/YYYY-MM-DD_all-events.jsonl
@@ -35,7 +35,10 @@ let onEventsReceived: ((events: HookEvent[]) => void) | null = null;
  * Get the path to today's all-events file
  */
 function getTodayEventsFile(): string {
-  const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+  const paiDir = process.env.PAI_DIR;
+  if (!paiDir) {
+    throw new Error('PAI_DIR environment variable not set');
+  }
   const now = new Date();
   // Convert to PST
   const pstDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));

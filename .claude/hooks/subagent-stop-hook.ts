@@ -10,7 +10,7 @@ const AGENT_VOICE_IDS: Record<string, string> = {
   designer: 'ZF6FPAbjXT4488VcRRnw',
   architect: 'muZKMsIDGYtIkjjiUS82',
   writer: 'gfRt6Z3Z8aTbpLfexQ7N',
-  kai: 'jqcCZkN6Knx8BJ5TBdYR',
+  lucy: 'jqcCZkN6Knx8BJ5TBdYR',
   default: 'jqcCZkN6Knx8BJ5TBdYR'
 };
 
@@ -102,7 +102,7 @@ function extractCompletionMessage(taskOutput: string): { message: string | null,
     const wordCount = customText.split(/\s+/).length;
     if (customText && wordCount <= 8) {
       // Try to extract agent type from the full output
-      let agentType = null;
+      let agentType: string | null = null;
 
       // Look for agent type in various formats
       const agentTypePatterns = [
@@ -192,7 +192,7 @@ function extractCompletionMessage(taskOutput: string): { message: string | null,
           message.length > 5) {
 
         // Try to detect agent type from context
-        let agentType = null;
+        let agentType: string | null = null;
         const agentMatch = taskOutput.match(/Sub-agent\s+(\w+)\s+completed/i);
         if (agentMatch) {
           agentType = agentMatch[1].toLowerCase();

@@ -1,0 +1,336 @@
+# Firecrawl Configuration Template
+#
+# This file provides a template for configuring Firecrawl operations.
+# Copy this file and customize for your specific use cases.
+
+# ==============================================================================
+# API Configuration
+# ==============================================================================
+
+api:
+  # Your Firecrawl API key (get from https://firecrawl.dev/app/api-keys)
+  # IMPORTANT: Use environment variables, never hardcode keys
+  key: "${FIRECRAWL_API_KEY}"
+
+  # API base URL (default: cloud API, or use self-hosted URL)
+  base_url: "https://api.firecrawl.dev"
+
+  # Timeout for API requests (milliseconds)
+  timeout: 30000  # 30 seconds
+
+# ==============================================================================
+# Default Scrape Options
+# ==============================================================================
+
+scrape_defaults:
+  # Output formats to request
+  # Options: markdown, html, rawHtml, links, images, summary
+  # Objects: {type: json, schema: ...}, {type: screenshot, ...}
+  formats:
+    - markdown
+
+  # Return only main content (skip ads, nav, footer)
+  onlyMainContent: true
+
+  # Cache freshness (milliseconds)
+  # 0 = always fresh, 86400000 = 1 day, 172800000 = 2 days (default)
+  maxAge: 86400000  # 1 day cache for 500% speed improvement
+
+  # Request timeout (milliseconds)
+  timeout: 30000  # 30 seconds
+
+  # Wait before scraping (milliseconds) - use sparingly
+  waitFor: 0
+
+  # PDF parsing (empty = auto-detect, ['pdf'] = force PDF parsing)
+  parsers: []
+
+  # Store in cache (set to false to skip caching for this request)
+  storeInCache: true
+
+  # HTML filtering (optional)
+  # includeTags: ['article', '.content', 'h1', 'h2', 'p']
+  # excludeTags: ['#ads', '.footer', 'nav', '.sidebar']
+
+# ==============================================================================
+# Default Crawl Options
+# ==============================================================================
+
+crawl_defaults:
+  # Maximum pages to crawl
+  limit: 100
+
+  # Maximum depth for URL discovery
+  maxDiscoveryDepth: 3
+
+  # Explore entire domain (navigate up to parent pages)
+  crawlEntireDomain: false
+
+  # Follow external links
+  allowExternalLinks: false
+
+  # Follow subdomains
+  allowSubdomains: false
+
+  # Delay between scrapes (seconds) - use for rate limiting
+  # delayBetweenScrapes: 1
+
+  # URL patterns (regex)
+  # includeUrlPatterns:
+  #   - '^/blog/.*$'
+  #   - '^/docs/.*$'
+
+  # excludeUrlPatterns:
+  #   - '^/admin/.*$'
+  #   - '^/auth/.*$'
+  #   - '^/api/.*$'
+
+  # Options for each scraped page (inherits scrape_defaults)
+  scrapeOptions:
+    formats:
+      - markdown
+    onlyMainContent: true
+    maxAge: 86400000
+
+# ==============================================================================
+# Default Batch Options
+# ==============================================================================
+
+batch_defaults:
+  # Output formats
+  formats:
+    - markdown
+
+  # Main content only
+  onlyMainContent: true
+
+  # Cache usage
+  maxAge: 86400000
+
+  # Concurrent requests (handled by Firecrawl automatically)
+  # Higher plans support more concurrency
+
+# ==============================================================================
+# Default Map Options
+# ==============================================================================
+
+map_defaults:
+  # Maximum URLs to return
+  limit: 100
+
+  # Sitemap usage: 'only' (sitemap only), 'include' (use if available), 'skip' (ignore)
+  sitemap: 'include'
+
+  # Include subdomains
+  includeSubdomains: true
+
+  # Filter URLs containing this text (optional)
+  # search: 'blog'
+
+# ==============================================================================
+# Default Extract Options
+# ==============================================================================
+
+extract_defaults:
+  # Maximum pages to extract from (for multi-page extraction)
+  limit: 50
+
+  # Schema for structured extraction (define in code)
+  # schema: {...}
+
+  # OR use prompt-based extraction (no schema)
+  # prompt: 'Extract product names, prices, and ratings'
+
+# ==============================================================================
+# Actions/Automation Presets
+# ==============================================================================
+
+action_presets:
+  # Wait for page load
+  page_load_wait:
+    - type: wait
+      milliseconds: 2000
+
+  # Scroll down to load lazy content
+  scroll_down:
+    - type: scroll
+      direction: down
+    - type: wait
+      milliseconds: 2000
+
+  # Search form preset (Google-style)
+  search_and_wait:
+    - type: wait
+      milliseconds: 2000
+    - type: write
+      selector: 'input[name="q"]'
+      text: '${SEARCH_QUERY}'
+    - type: press
+      key: 'Enter'
+    - type: wait
+      milliseconds: 3000
+
+# ==============================================================================
+# Platform-Specific Configurations
+# ==============================================================================
+
+platforms:
+  # Documentation sites
+  documentation:
+    scrape:
+      formats: [markdown]
+      onlyMainContent: true
+      maxAge: 604800000  # 1 week cache (docs don't change often)
+    crawl:
+      limit: 200
+      includeUrlPatterns: ['^/docs/.*$']
+      maxDiscoveryDepth: 4
+
+  # E-commerce sites
+  ecommerce:
+    scrape:
+      formats: [markdown, images]
+      onlyMainContent: true
+      maxAge: 3600000  # 1 hour cache (prices change)
+    extract:
+      # Use with product schema
+      formats:
+        - type: json
+          # Define schema in code
+
+  # Blog sites
+  blog:
+    scrape:
+      formats: [markdown]
+      onlyMainContent: true
+      maxAge: 86400000  # 1 day cache
+    crawl:
+      includeUrlPatterns: ['^/blog/.*$', '^/post/.*$']
+      limit: 100
+
+  # News sites
+  news:
+    scrape:
+      formats: [markdown]
+      onlyMainContent: true
+      maxAge: 0  # Always fresh (news is time-sensitive)
+
+# ==============================================================================
+# Rate Limiting & Performance
+# ==============================================================================
+
+performance:
+  # Use caching aggressively for development/testing
+  development:
+    maxAge: 604800000  # 1 week
+
+  # Balanced for production
+  production:
+    maxAge: 86400000  # 1 day
+
+  # Always fresh for real-time data
+  realtime:
+    maxAge: 0
+
+# ==============================================================================
+# Authentication Configuration
+# ==============================================================================
+
+auth:
+  # IMPORTANT: Store cookies in environment variables, NEVER in config files
+
+  # Example: Internal tool authentication
+  # internal_tool:
+  #   headers:
+  #     Cookie: "${INTERNAL_TOOL_COOKIE}"
+
+  # Example: API key authentication
+  # api_service:
+  #   headers:
+  #     Authorization: "Bearer ${API_SERVICE_TOKEN}"
+
+# ==============================================================================
+# Cost Optimization Settings
+# ==============================================================================
+
+cost_optimization:
+  # Use these settings to minimize credit usage
+
+  # Map first, then selective scrape
+  map_first: true
+
+  # Aggressive caching
+  cache_enabled: true
+  default_maxAge: 604800000  # 1 week
+
+  # Limit crawl scope
+  strict_crawl_limits:
+    limit: 50
+    maxDiscoveryDepth: 2
+
+  # Use onlyMainContent to reduce data transfer
+  main_content_only: true
+
+  # Selective format requests
+  minimal_formats: [markdown]
+
+# ==============================================================================
+# Example Configurations
+# ==============================================================================
+
+examples:
+  # Quick scrape with cache
+  quick_scrape:
+    formats: [markdown]
+    maxAge: 86400000
+
+  # Comprehensive scrape
+  full_scrape:
+    formats: [markdown, html, links, images]
+    onlyMainContent: false
+
+  # Screenshot capture
+  screenshot:
+    formats:
+      - type: screenshot
+        fullPage: true
+        quality: 100
+
+  # Structured extraction
+  extract_products:
+    formats:
+      - type: json
+        prompt: 'Extract product names, prices, and availability'
+
+  # Authenticated scrape
+  auth_scrape:
+    headers:
+      Cookie: "${AUTH_COOKIE}"
+    formats: [markdown]
+
+  # Actions before scrape
+  dynamic_scrape:
+    actions:
+      - type: wait
+        milliseconds: 2000
+      - type: scroll
+        direction: down
+      - type: wait
+        milliseconds: 2000
+    formats: [markdown]
+
+# ==============================================================================
+# Notes
+# ==============================================================================
+
+# 1. Always use environment variables for sensitive data (API keys, cookies)
+# 2. Adjust maxAge based on how often content changes
+# 3. Use includeUrlPatterns/excludeUrlPatterns to limit crawl scope
+# 4. Test selectors in browser DevTools before using in actions
+# 5. Monitor rate limits for your plan
+# 6. Use onlyMainContent for cleaner, cheaper results
+# 7. Map before crawl for better cost control
+
+# Get your API key: https://firecrawl.dev/app/api-keys
+# Documentation: https://docs.firecrawl.dev
+# Support: https://github.com/mendableai/firecrawl/issues

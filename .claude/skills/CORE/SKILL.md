@@ -14,20 +14,20 @@ description: |
   Message to AI: Be direct and honest. If something seems like a user error, point it out clearly but with humor. Stay focused on solving problems efficiently. Don't waste time on excessive politeness - respect Michael's time.
 
   === ESSENTIAL CONTACTS (Always Available) ===
-  - [Primary Contact Name] [Relationship]: email@example.com
-  - [Secondary Contact] [Relationship]: email@example.com
+  - [Primary Contact Name] [business-partner]: matt@airevolutionlabs.com
+  - [Secondary Contact] [AI-engineer]: chris@airevolutionlabs.com
   - [Third Contact] [Relationship]: email@example.com
   Full contact list in SKILL.md extended section below
 
   === CORE STACK PREFERENCES (Always Active) ===
   - Primary Languages: Python + TypeScript (mixed stack)
-  - Package managers: PIXI (primary), uv for Python, bun for JS/TS
+  - Package manager: PIXI (handles both Python and JS/TS)
   - Analysis vs Action: If asked to analyze, do analysis only - don't change things unless explicitly asked
   - Scratchpad: Use ~/.claude/scratchpad/ with timestamps for test/random tasks
 
   === CRITICAL SECURITY (Always Active) ===
   - NEVER COMMIT FROM WRONG DIRECTORY - Run `git remote -v` BEFORE every commit
-  - `~/.claude/` CONTAINS EXTREMELY SENSITIVE PRIVATE DATA - NEVER commit to public repos
+  - `~/.claude/` and '../../.claude/' CONTAINS EXTREMELY SENSITIVE PRIVATE DATA - NEVER commit to public repos
   - CHECK THREE TIMES before git add/commit from any directory
   - PAI directory (/Users/michaelatherton/Documents/condaEnv/AIRL/PAI) is a public repo - NEVER commit sensitive personal data
   - Always verify which repo you're in before committing
@@ -74,7 +74,7 @@ When user says these first names:
 
 - **[Primary Contact]** [Life partner/Spouse/etc.] - email@example.com
 - **[Assistant Name]** [Executive Assistant/Admin] - email@example.com
-- **[Colleague 1]** [Role/Relationship] - email@example.com
+- **[Business Partner]** [CEO/airevlabs owner] - matt@airevolutionlabs.com
 - **[Colleague 2]** [Role/Relationship] - email@example.com
 - **[Friend/Mentor]** [Relationship] - email@example.com
 - **[Business Contact 1]** [Role/Company] - email@example.com
@@ -114,18 +114,18 @@ For voice system routing:
 
 ### Scratchpad for Test/Random Tasks (Detailed)
 
-When working on test tasks, experiments, or random one-off requests, ALWAYS work in `~/.claude/scratchpad/` with proper timestamp organization:
+When working on test tasks, experiments, or random one-off requests, ALWAYS work in `$HOME/Documents/condaEnv/AIRL/PAI/.claude/scratchpad/` with proper timestamp organization:
 
 - Create subdirectories using naming: `YYYY-MM-DD-HHMMSS_description/`
-- Example: `~/.claude/scratchpad/2025-10-13-143022_prime-numbers-test/`
-- NEVER drop random projects / content directly in `~/.claude/` directory
+- Example: `$HOME/Documents/condaEnv/AIRL/PAI/.claude/scratchpad/2025-10-13-143022_prime-numbers-test/`
+- NEVER drop random projects / content directly in `$HOME/Documents/condaEnv/AIRL/PAI/.claude/` directory
 - This applies to both main AI and all sub-agents
 - Clean up scratchpad periodically or when tests complete
-- **IMPORTANT**: Scratchpad is for working files only - valuable outputs (learnings, decisions, research findings) still get captured in the system output (`~/.claude/history/`) via hooks
+- **IMPORTANT**: Scratchpad is for working files only - valuable outputs (learnings, decisions, research findings) still get captured in the system output (`$HOME/Documents/condaEnv/AIRL/PAI/.claude/history/`) via hooks
 
 ### Hooks Configuration
 
-Configured in `~/.claude/settings.json`
+Configured in `$HOME/Documents/condaEnv/AIRL/PAI/.claude/settings.json`
 
 ---
 
@@ -136,7 +136,7 @@ Configured in `~/.claude/settings.json`
 - **NEVER Post sensitive data to public repos**
 - **NEVER COMMIT FROM THE WRONG DIRECTORY** - Always verify which repository
 - **CHECK THE REMOTE** - Run `git remote -v` BEFORE committing
-- **`~/.claude/` CONTAINS EXTREMELY SENSITIVE PRIVATE DATA** - NEVER commit to public repos
+- **`$HOME/Documents/condaEnv/AIRL/PAI/.claude/` CONTAINS EXTREMELY SENSITIVE PRIVATE DATA** - NEVER commit to public repos
 - **CHECK THREE TIMES** before git add/commit from any directory
 - **PAI Repository Warning**: /Users/michaelatherton/Documents/condaEnv/AIRL/PAI is PUBLIC - no personal contacts, credentials, or sensitive data
 - **ALWAYS COMMIT PROJECT FILES FROM THEIR OWN DIRECTORIES**

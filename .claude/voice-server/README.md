@@ -101,7 +101,7 @@ curl -X POST http://localhost:8888/notify \
 ### Available Voice IDs
 ```javascript
 // PAI System Agents
-Kai:                     s3TPKV1kjDlVtZbl4Ksh  // Main assistant
+Lucy:                    s3TPKV1kjDlVtZbl4Ksh  // Main assistant
 Perplexity-Researcher:   AXdMgz6evoL7OPd7eU12  // Perplexity research agent
 Claude-Researcher:       AXdMgz6evoL7OPd7eU12  // Claude research agent
 Gemini-Researcher:       iLVmqjzCGGvqtMCk6vVQ  // Gemini research agent
@@ -158,7 +158,7 @@ ELEVENLABS_API_KEY=your_api_key_here
 **Optional:**
 ```bash
 PORT=8888                                    # Server port (default: 8888)
-ELEVENLABS_VOICE_ID=s3TPKV1kjDlVtZbl4Ksh   # Default voice ID (Kai's voice)
+ELEVENLABS_VOICE_ID=s3TPKV1kjDlVtZbl4Ksh   # Default voice ID (Lucy's voice)
 ```
 
 ### Voice Configuration (voices.json)
@@ -169,7 +169,7 @@ The `voices.json` file provides reference metadata for agent voices:
 {
   "default_rate": 175,
   "voices": {
-    "kai": {
+    "lucy": {
       "voice_name": "Jamie (Premium)",
       "rate_multiplier": 1.3,
       "rate_wpm": 228,

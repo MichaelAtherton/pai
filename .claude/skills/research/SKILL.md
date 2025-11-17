@@ -34,26 +34,26 @@ This skill activates when the user requests research or information gathering:
 
 **QUICK RESEARCH MODE:**
 - User says "quick research" → Launch 3 agents (1 of each type)
-- **Timeout: 2 minutes** | Main Kai waits 2 minutes then synthesizes
+- **Timeout: 2 minutes** | Main Lucy waits 2 minutes then synthesizes
 - Best for: Simple queries, straightforward questions
 
 **STANDARD RESEARCH MODE (Default):**
 - Default for most research requests → Launch 9 agents (3 of each type)
-- **Timeout: 3 minutes** | Main Kai waits 3 minutes then synthesizes
+- **Timeout: 3 minutes** | Main Lucy waits 3 minutes then synthesizes
 - Best for: Most research needs, comprehensive coverage
 
 **EXTENSIVE RESEARCH MODE:**
 - User says "extensive research" → Launch 24 agents (8 of each type)
 - Use be-creative skill with UltraThink for maximum query diversity
 - Generate 24 unique, creative research angles
-- **Timeout: 10 minutes** | Main Kai waits 10 minutes then synthesizes
+- **Timeout: 10 minutes** | Main Lucy waits 10 minutes then synthesizes
 - Best for: Deep-dive research, multi-domain analysis, comprehensive reports
 
 **⏱️ CRITICAL TIMEOUT RULES:**
 - **Quick (3 agents): 2 minute timeout**
 - **Standard (9 agents): 3 minute timeout**
 - **Extensive (24 agents): 10 minute timeout**
-- After timeout, main Kai STOPS WAITING and synthesizes with whatever results are available
+- After timeout, main Lucy STOPS WAITING and synthesizes with whatever results are available
 - Proceed with partial results - don't wait indefinitely for stragglers
 
 ## How to Execute

@@ -14,7 +14,7 @@ PAI v1.2.0 introduces the **Skills-as-Containers** pattern, a significant archit
 
 **v0.6.0 Structure (Flat):**
 ```
-.claude/skills/content-creation/
+$HOME/Documents/condaEnv/AIRL/PAI/.claude/zshrc-aliases
 ├── SKILL.md
 ├── write-post.md       # Command at root level
 └── publish-post.md     # Command at root level
@@ -22,7 +22,7 @@ PAI v1.2.0 introduces the **Skills-as-Containers** pattern, a significant archit
 
 **v1.2.0 Structure (Organized):**
 ```
-.claude/skills/content-creation/
+$HOME/Documents/condaEnv/AIRL/PAI/.claude/zshrc-aliases
 ├── SKILL.md            # Core skill definition
 ├── workflows/          # NEW: Workflows subdirectory
 │   ├── write.md       # Workflow file

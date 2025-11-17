@@ -1,7 +1,7 @@
 # PAI Voice System Documentation
 
 ## Overview
-The PAI Voice System provides text-to-speech capabilities for Kai and all agents using ElevenLabs TTS API. The system uses a unified stop-hook approach where completion messages are read aloud with distinct voices for Kai and each specialized agent, providing voice differentiation through character-matched, high-quality ElevenLabs voices.
+The PAI Voice System provides text-to-speech capabilities for Lucy and all agents using ElevenLabs TTS API. The system uses a unified stop-hook approach where completion messages are read aloud with distinct voices for Lucy and each specialized agent, providing voice differentiation through character-matched, high-quality ElevenLabs voices.
 
 ## Architecture Overview
 
@@ -19,7 +19,7 @@ The PAI Voice System provides text-to-speech capabilities for Kai and all agents
    - Parses completion messages from transcripts
    - Extracts text from COMPLETED lines
    - Sends appropriate voice requests with entity-specific voices
-   - Handles both Kai's direct work and agent completions
+   - Handles both Lucy's direct work and agent completions
 
 3. **Agent Configurations** (`${PAI_DIR}/agents/*.md`)
    - Each agent has a unique voice matching their personality
@@ -32,7 +32,7 @@ The PAI Voice System provides text-to-speech capabilities for Kai and all agents
 
 1. **Task Execution**
    - User requests a task
-   - Either Kai handles it directly or delegates to an agent
+   - Either Lucy handles it directly or delegates to an agent
 
 2. **Completion Format**
    - All responses must end with: `🎯 COMPLETED: [description of what was done]`
@@ -43,10 +43,10 @@ The PAI Voice System provides text-to-speech capabilities for Kai and all agents
    - Hook reads the transcript after each response
    - Searches for the COMPLETED line in the output
    - Extracts the exact text after "COMPLETED:"
-   - Determines if it was Kai or an agent who completed the task
+   - Determines if it was Lucy or an agent who completed the task
 
 4. **Voice Selection**
-   - For Kai's completions: Uses ElevenLabs voice ID s3TPKV1kjDlVtZbl4Ksh
+   - For Lucy's completions: Uses ElevenLabs voice ID s3TPKV1kjDlVtZbl4Ksh
    - For agent completions: Uses the agent's specific ElevenLabs voice ID
 
 5. **Voice Generation**
@@ -62,7 +62,7 @@ All entities use ElevenLabs TTS voices for high-quality, natural speech. Voices 
 
 | Entity | ElevenLabs Voice ID | Personality Match |
 |--------|---------------------|-------------------|
-| Kai | s3TPKV1kjDlVtZbl4Ksh | Professional, conversational |
+| Lucy | s3TPKV1kjDlVtZbl4Ksh | Professional, conversational |
 | Perplexity-Researcher | AXdMgz6evoL7OPd7eU12 | Analytical, clear |
 | Claude-Researcher | AXdMgz6evoL7OPd7eU12 | Strategic, sophisticated |
 | Gemini-Researcher | iLVmqjzCGGvqtMCk6vVQ | Multi-perspective, thorough |
@@ -93,7 +93,7 @@ The voice system uses a centralized JSON configuration file for voice naming and
 {
   "default_rate": 175,
   "voices": {
-    "kai": {
+    "lucy": {
       "voice_name": "Jamie (Premium)",
       "rate_multiplier": 1.3,
       "rate_wpm": 228,
@@ -123,7 +123,7 @@ ELEVENLABS_API_KEY=your_api_key_here
 **Optional:**
 ```bash
 PORT="8888"  # Optional, defaults to 8888
-ELEVENLABS_VOICE_ID="s3TPKV1kjDlVtZbl4Ksh"  # Optional, Kai's default voice
+ELEVENLABS_VOICE_ID="s3TPKV1kjDlVtZbl4Ksh"  # Optional, Lucy's default voice
 ```
 
 Get your free API key at [elevenlabs.io](https://elevenlabs.io) (10,000 characters/month free tier available).
@@ -145,7 +145,7 @@ Main endpoint for voice notifications.
 
 **Field Requirements:**
 - `message` (required): The text to be spoken
-- `voice_id` (optional): ElevenLabs voice ID (defaults to Kai's voice if not specified)
+- `voice_id` (optional): ElevenLabs voice ID (defaults to Lucy's voice if not specified)
 - `title` (optional): Visual notification title
 - `voice_enabled` (optional): Set to false to skip voice output
 
@@ -168,7 +168,7 @@ Simplified endpoint for PAI system messages.
 }
 ```
 
-Uses Kai's default voice (s3TPKV1kjDlVtZbl4Ksh).
+Uses Lucy's default voice (s3TPKV1kjDlVtZbl4Ksh).
 
 #### GET /health
 Health check endpoint.
@@ -189,15 +189,15 @@ Health check endpoint.
 ### Hook Configuration
 Voice mappings are defined in the stop hook files:
 
-**Main Agent (Kai):** `${PAI_DIR}/hooks/stop-hook.ts`
+**Main Agent (Lucy):** `${PAI_DIR}/hooks/stop-hook.ts`
 ```typescript
-voice_id: 's3TPKV1kjDlVtZbl4Ksh'  // Kai's ElevenLabs voice ID
+voice_id: 's3TPKV1kjDlVtZbl4Ksh'  // Lucy's ElevenLabs voice ID
 ```
 
 **Subagents:** `${PAI_DIR}/hooks/subagent-stop-hook.ts`
 ```typescript
 const ELEVENLABS_VOICE_IDS: Record<string, string> = {
-  'kai': 's3TPKV1kjDlVtZbl4Ksh',
+  'lucy': 's3TPKV1kjDlVtZbl4Ksh',
   'writer': 'gfRt6Z3Z8aTbpLfexQ7N',
   'engineer': 'fATgBRI8wg5KkDFg8vBd',
   'principal-engineer': 'iLVmqjzCGGvqtMCk6vVQ',
@@ -221,7 +221,7 @@ Voices are selected based on:
 ## COMPLETED Line Formatting
 
 ### Required Format
-Every response from Kai or an agent must end with:
+Every response from Lucy or an agent must end with:
 
 ```
 🎯 COMPLETED: [brief description of accomplishment]
@@ -308,10 +308,10 @@ The voice system requires the `🎯 COMPLETED:` line. Ensure:
 
 ### Testing Individual Voices
 ```bash
-# Test Kai's voice
+# Test Lucy's voice
 curl -X POST http://localhost:8888/notify \
   -H "Content-Type: application/json" \
-  -d '{"message":"Testing Kai voice","voice_id":"s3TPKV1kjDlVtZbl4Ksh"}'
+  -d '{"message":"Testing Lucy voice","voice_id":"s3TPKV1kjDlVtZbl4Ksh"}'
 
 # Test Perplexity-Researcher voice
 curl -X POST http://localhost:8888/notify \
@@ -381,7 +381,7 @@ curl -X POST http://localhost:8888/notify \
 
 The PAI Voice System provides:
 - ✅ High-quality neural TTS using ElevenLabs API
-- ✅ Distinct voices for Kai and each agent
+- ✅ Distinct voices for Lucy and each agent
 - ✅ Professional voice quality
 - ✅ Natural voice variety (via different ElevenLabs voices)
 - ✅ Simple integration via stop-hook
@@ -389,7 +389,7 @@ The PAI Voice System provides:
 - ⚠️ Requires API key and internet connection
 - ⚠️ Subject to ElevenLabs usage limits and pricing
 
-Voice makes Kai and agents feel more alive and engaging!
+Voice makes Lucy and agents feel more alive and engaging!
 
 ## Recent Changes (2025-10-19)
 

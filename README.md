@@ -429,7 +429,7 @@ PAI exists to solve this. This project's goal is to give the most powerful AI ca
 
 ```mermaid
 graph TB
-    You[👤 You] --> PAI[🧠 PAI/Kai]
+    You[👤 You] --> PAI[🧠 PAI/Lucy]
     
     PAI --> Work[💼 Work]
     PAI --> Life[🏠 Life]

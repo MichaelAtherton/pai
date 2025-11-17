@@ -100,14 +100,14 @@ function getTranscriptStats(transcriptPath: string): { messageCount: number; isL
 }
 
 // Load voice configuration
-let kaiVoiceConfig: VoiceConfig;
+let lucyVoiceConfig: VoiceConfig;
 try {
   const voicesPath = join(homedir(), 'Library/Mobile Documents/com~apple~CloudDocs/Claude/voice-server/voices.json');
   const config: VoicesConfig = JSON.parse(readFileSync(voicesPath, 'utf-8'));
-  kaiVoiceConfig = config.voices.kai;
+  lucyVoiceConfig = config.voices.lucy;
 } catch (e) {
-  // Fallback to hardcoded Kai voice config
-  kaiVoiceConfig = {
+  // Fallback to hardcoded Lucy voice config
+  lucyVoiceConfig = {
     voice_name: "Jamie (Premium)",
     rate_wpm: 263,
     rate_multiplier: 1.5,
@@ -164,13 +164,13 @@ async function main() {
     }
   }
   
-  // Send notification with voice (using Kai's voice from config)
+  // Send notification with voice (using Lucy's voice from config)
   await sendNotification({
-    title: 'Kai Context',
+    title: 'Lucy Context',
     message: message,
     voice_enabled: true,
-    voice_name: kaiVoiceConfig.voice_name,
-    rate: kaiVoiceConfig.rate_wpm,
+    voice_name: lucyVoiceConfig.voice_name,
+    rate: lucyVoiceConfig.rate_wpm,
     priority: 'low',
   });
   

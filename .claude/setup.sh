@@ -446,7 +446,7 @@ if [ "$SHOULD_ADD_CONFIG" = true ]; then
     print_step "Adding PAI environment variables to $SHELL_CONFIG..."
 
     # Ask for AI assistant name
-    AI_NAME=$(ask_input "What would you like to call your AI assistant?" "Kai")
+    AI_NAME=$(ask_input "What would you like to call your AI assistant?" "Lucy")
 
     # Ask for color
     echo ""
@@ -795,10 +795,10 @@ IDENTITY_EOF
                 print_warning "Could not find Core Identity section in PAI.md"
                 rm "$PAI_DIR/.pai_identity_tmp"
             fi
-        elif grep -q "default: Kai" "$PAI_DIR/.claude/PAI.md" 2>/dev/null; then
+        elif grep -q "default: Lucy" "$PAI_DIR/.claude/PAI.md" 2>/dev/null; then
             # Simple case: just update the name line
             print_warning "Updating AI assistant name in PAI.md..."
-            sed -i "s/\*\*Name:\*\* You can customize this (default: Kai)/\*\*Name:\*\* $AI_NAME/" "$PAI_DIR/.claude/PAI.md"
+            sed -i "s/\*\*Name:\*\* You can customize this (default: Lucy)/\*\*Name:\*\* $AI_NAME/" "$PAI_DIR/.claude/PAI.md"
             print_success "PAI.md updated with AI name: $AI_NAME"
         fi
     fi
@@ -806,13 +806,13 @@ IDENTITY_EOF
 
     # Update load-dynamic-requirements.md with the user's chosen AI assistant name
     if [ -f "$PAI_DIR/.claude/commands/load-dynamic-requirements.md" ]; then
-        # Replace hardcoded "Kai" references with the user's chosen name
-        if grep -q "respond like Kai" "$PAI_DIR/.claude/commands/load-dynamic-requirements.md" 2>/dev/null; then
+        # Replace hardcoded "Lucy" references with the user's chosen name
+        if grep -q "respond like Lucy" "$PAI_DIR/.claude/commands/load-dynamic-requirements.md" 2>/dev/null; then
             print_warning "Updating AI name in load-dynamic-requirements.md..."
 
-            # Replace the two Kai references in the conversational section
-            sed -i "s/respond like Kai having a chat/respond like $AI_NAME having a chat/g" "$PAI_DIR/.claude/commands/load-dynamic-requirements.md"
-            sed -i "s/You're Kai, their assistant/You're $AI_NAME, their assistant/g" "$PAI_DIR/.claude/commands/load-dynamic-requirements.md"
+            # Replace the two Lucy references in the conversational section
+            sed -i "s/respond like Lucy having a chat/respond like $AI_NAME having a chat/g" "$PAI_DIR/.claude/commands/load-dynamic-requirements.md"
+            sed -i "s/You're Lucy, their assistant/You're $AI_NAME, their assistant/g" "$PAI_DIR/.claude/commands/load-dynamic-requirements.md"
 
             print_success "load-dynamic-requirements.md updated with AI name: $AI_NAME"
         fi
@@ -825,7 +825,7 @@ IDENTITY_EOF
             print_warning "Updating AI name in SKILL.md..."
 
             # Replace the template placeholder with the user's chosen name
-            sed -i "s/Your Name: \[CUSTOMIZE - e.g., Kai, Nova, Atlas\]/Your Name: $AI_NAME/" "$PAI_DIR/.claude/skills/CORE/SKILL.md"
+            sed -i "s/Your Name: \[CUSTOMIZE - e.g., Lucy, Nova, Atlas\]/Your Name: $AI_NAME/" "$PAI_DIR/.claude/skills/CORE/SKILL.md"
 
             print_success "SKILL.md updated with AI name: $AI_NAME"
         fi

@@ -94,7 +94,7 @@ Complete observability infrastructure with real-time monitoring dashboard and co
 **🔍 Agent Observability Dashboard:**
 - Real-time WebSocket streaming of all Claude Code events
 - Visual monitoring with color-coded agent identification
-- Multi-agent session tracking (Kai, Engineer, Architect, Designer, etc.)
+- Multi-agent session tracking (Lucy, Engineer, Architect, Designer, etc.)
 - Event timeline with tool usage, sessions, and agent lifecycle
 - Server/Client architecture (localhost:4000 / localhost:5172)
 - Smart grid layout with responsive design
@@ -150,7 +150,7 @@ open http://localhost:5172
 ```
 
 **🎨 Agent Color Mapping:**
-- Kai (main) → Purple
+- Lucy (main) → Purple
 - Engineer → Green
 - Architect → Blue
 - Designer → Pink
@@ -406,7 +406,7 @@ PAI exists to solve this. This project's goal is to give the most powerful AI ca
 
 ```mermaid
 graph TB
-    You[👤 You] --> PAI[🧠 PAI/Kai]
+    You[👤 You] --> PAI[🧠 PAI/Lucy]
     
     PAI --> Work[💼 Work]
     PAI --> Life[🏠 Life]
@@ -713,7 +713,7 @@ PAI hooks into every Claude Code event to provide complete visibility:
 ```
 
 **What you'll see:**
-- 🎨 Color-coded agent identification (Kai, Engineer, Architect, Designer, etc.)
+- 🎨 Color-coded agent identification (Lucy, Engineer, Architect, Designer, etc.)
 - 📊 Real-time event stream with tool usage
 - 🔄 Session lifecycle tracking
 - 📈 Performance metrics and timing
@@ -800,7 +800,7 @@ PAI automatically detects which agent is running and assigns colors:
 
 | Agent | Color | Detection Method |
 |:------|:------|:-----------------|
-| Kai (main) | Purple | Default session |
+| Lucy (main) | Purple | Default session |
 | Engineer | Green | Task tool + subagent_type |
 | Architect | Blue | Task tool + subagent_type |
 | Designer | Pink | Task tool + subagent_type |

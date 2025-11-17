@@ -42,8 +42,10 @@ function getPSTTimestamp(): string {
 
 // Get current events file path
 function getEventsFilePath(): string {
-  // Use PAI_DIR environment variable or default to ~/.claude
-  const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+  const paiDir = process.env.PAI_DIR;
+  if (!paiDir) {
+    throw new Error('PAI_DIR environment variable not set');
+  }
   const now = new Date();
   const pstDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
   const year = pstDate.getFullYear();
@@ -62,7 +64,10 @@ function getEventsFilePath(): string {
 
 // Session-to-agent mapping functions
 function getSessionMappingFile(): string {
-  const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+  const paiDir = process.env.PAI_DIR;
+  if (!paiDir) {
+    throw new Error('PAI_DIR environment variable not set');
+  }
   return join(paiDir, 'agent-sessions.json');
 }
 
@@ -71,14 +76,14 @@ function getAgentForSession(sessionId: string): string {
     const mappingFile = getSessionMappingFile();
     if (existsSync(mappingFile)) {
       const mappings = JSON.parse(readFileSync(mappingFile, 'utf-8'));
-      // Default agent name - change 'kai' to your primary agent's name
-      return mappings[sessionId] || 'kai';
+      // Default agent name - change 'lucy' to your primary agent's name
+      return mappings[sessionId] || 'lucy';
     }
   } catch (error) {
     // Ignore errors, default to primary agent
   }
-  // Change 'kai' to your primary agent's name
-  return 'kai';
+  // Change 'lucy' to your primary agent's name
+  return 'lucy';
 }
 
 function setAgentForSession(sessionId: string, agentName: string): void {
@@ -135,9 +140,9 @@ async function main() {
     }
     // If this is a SubagentStop or Stop event, reset to primary agent
     else if (eventType === 'SubagentStop' || eventType === 'Stop') {
-      // Change 'kai' to your primary agent's name
-      agentName = 'kai';
-      setAgentForSession(sessionId, 'kai');
+      // Change 'lucy' to your primary agent's name
+      agentName = 'lucy';
+      setAgentForSession(sessionId, 'lucy');
     }
     // Check if CLAUDE_CODE_AGENT env variable is set (for subagents)
     else if (process.env.CLAUDE_CODE_AGENT) {

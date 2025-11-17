@@ -1,6 +1,6 @@
 # 🎯 ALEX HORMOZI PITCH CREATION WORKFLOW
 
-**YOU (Kai) are reading this because a pitch/offer creation request was detected.**
+**YOU (Lucy) are reading this because a pitch/offer creation request was detected.**
 
 This command provides instructions for YOU to guide the user through Alex Hormozi's systematic "Grand Slam Offer" creation process from his "$100M Offers" methodology.
 
@@ -319,7 +319,7 @@ At the end of the workflow, the user should have:
 
 ---
 
-## 🎯 EXECUTION GUIDELINES FOR KAI
+## 🎯 EXECUTION GUIDELINES FOR Lucy
 
 **1. Be Interactive**
 - Ask clarifying questions

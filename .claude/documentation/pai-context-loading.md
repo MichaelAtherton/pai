@@ -160,7 +160,10 @@ If subagent detected, hook exits silently (subagents don't need PAI context).
 
 ### 3. File Reading
 ```typescript
-const paiDir = process.env.PAI_DIR || join(homedir(), '.claude');
+const paiDir = process.env.PAI_DIR;
+if (!paiDir) {
+  throw new Error('PAI_DIR environment variable not set');
+}
 const paiSkillPath = join(paiDir, 'skills/CORE/SKILL.md');
 const paiContent = readFileSync(paiSkillPath, 'utf-8');
 ```
